@@ -2,10 +2,8 @@ package alankstewart.marsrovers;
 
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.PrintStream;
-import java.io.PrintWriter;
+import java.io.*;
+import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 import static org.hamcrest.core.Is.is;
@@ -18,11 +16,20 @@ public class MarsRoversTest {
 
     @Test
     public void shouldLoadInputDataAndRun() throws Exception {
+        assertThat(getOutput("commands.txt"), is("1 3 N\n5 1 E\n"));
+    }
+
+    @Test
+    public void shouldLoadTestInputDataAndRun() throws Exception {
+        assertThat(getOutput("test-commands.txt"), is("1 3 N\n5 1 E\n3 5 N\n"));
+    }
+
+    private String getOutput(String fileName) throws URISyntaxException, IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try (PrintWriter writer = new PrintWriter(new PrintStream(baos))) {
-            File file = Paths.get(getClass().getClassLoader().getResource("commands.txt").toURI()).toFile();
+            File file = Paths.get(getClass().getClassLoader().getResource(fileName).toURI()).toFile();
             new MarsRovers().loadInputDataAndRun(file, writer);
         }
-        assertThat(baos.toString(), is("1 3 N\n5 1 E\n"));
+        return baos.toString();
     }
 }
