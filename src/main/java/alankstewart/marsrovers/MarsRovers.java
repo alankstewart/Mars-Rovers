@@ -46,7 +46,7 @@ public class MarsRovers {
         List<Rover> rovers = getRovers(path, plateau);
         List<String> commandsStrings = getCommandsStrings(path);
         if (rovers.size() != commandsStrings.size()) {
-            throw new IllegalStateException("Each Mars Rover must have commands");
+            throw new IllegalStateException("Each Mars Rover must have its own initial position, orientation, and commands");
         }
 
         IntStream.range(0, rovers.size())
@@ -65,7 +65,7 @@ public class MarsRovers {
                     .map(PLATEAU_REGEX::matcher)
                     .filter(Matcher::matches)
                     .map(m -> new Plateau(parseInt(m.group(1)), parseInt(m.group(2))))
-                    .get();
+                    .orElseThrow(() -> new IllegalStateException("Input file must contain plateau coordinates as the first line"));
         }
     }
 
