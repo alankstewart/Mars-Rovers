@@ -56,8 +56,9 @@ public class MarsRovers {
 
         IntStream.range(0, rovers.size())
                 .forEach(i -> {
-                    rovers.get(i).executeCommands(commandsStrings.get(i));
-                    writer.println(rovers.get(i).getCurrentPosition());
+                    Rover rover = rovers.get(i);
+                    rover.executeCommands(commandsStrings.get(i));
+                    writer.println(rover.getCurrentPosition());
                 });
     }
 
