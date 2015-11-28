@@ -37,7 +37,8 @@ public enum Direction {
         public Direction right() {
             return S;
         }
-    }, W(-1, 0) {
+    },
+    W(-1, 0) {
         @Override
         public Direction left() {
             return S;
