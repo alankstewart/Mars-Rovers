@@ -65,7 +65,7 @@ public class MarsRovers {
                     .map(PLATEAU_REGEX::matcher)
                     .filter(Matcher::matches)
                     .map(m -> new Plateau(parseInt(m.group(1)), parseInt(m.group(2))))
-                    .orElseThrow(() -> new IllegalStateException("Input file must contain plateau coordinates as the first line"));
+                    .orElseThrow(() -> new IllegalStateException("Input file must contain plateau upper-right coordinates as the first line"));
         }
     }
 
