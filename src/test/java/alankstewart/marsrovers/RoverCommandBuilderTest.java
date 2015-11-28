@@ -1,4 +1,4 @@
-package alankstewart.marsrovers.command;
+package alankstewart.marsrovers;
 
 import org.junit.Test;
 

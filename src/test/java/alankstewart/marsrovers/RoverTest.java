@@ -1,4 +1,4 @@
-package alankstewart.marsrovers.model;
+package alankstewart.marsrovers;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package alankstewart.marsrovers.model;
+package alankstewart.marsrovers;
 
 /**
  * Created by alanstewart on 28/11/2015.

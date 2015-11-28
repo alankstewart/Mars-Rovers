@@ -1,10 +1,5 @@
 package alankstewart.marsrovers;
 
-import alankstewart.marsrovers.model.Direction;
-import alankstewart.marsrovers.model.Plateau;
-import alankstewart.marsrovers.model.Position;
-import alankstewart.marsrovers.model.Rover;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;

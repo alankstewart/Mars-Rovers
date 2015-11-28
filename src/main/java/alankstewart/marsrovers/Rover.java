@@ -1,6 +1,4 @@
-package alankstewart.marsrovers.model;
-
-import alankstewart.marsrovers.command.RoverCommandBuilder;
+package alankstewart.marsrovers;
 
 /**
  * Created by alanstewart on 28/11/2015.

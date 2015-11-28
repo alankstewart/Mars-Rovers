@@ -1,6 +1,4 @@
-package alankstewart.marsrovers.command;
-
-import alankstewart.marsrovers.model.Rover;
+package alankstewart.marsrovers;
 
 import java.util.Collections;
 import java.util.List;
