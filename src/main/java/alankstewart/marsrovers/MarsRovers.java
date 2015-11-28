@@ -63,7 +63,8 @@ public class MarsRovers {
 
     private Plateau getPlateau(Path path) throws IOException {
         try (Stream<String> lines = Files.lines(path)) {
-            return lines.limit(1)
+            return lines
+                    .limit(1)
                     .findFirst()
                     .map(PLATEAU_REGEX::matcher)
                     .filter(Matcher::matches)
