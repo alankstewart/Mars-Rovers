@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 /**
  * Created by alanstewart on 4/03/15.
@@ -25,13 +29,8 @@ public class MarsRoversServlet extends HttpServlet {
         String fileName = filePart.getSubmittedFileName() + "." + System.nanoTime();
         File tempFile = Files.createTempFile(fileName, null).toFile();
         tempFile.deleteOnExit();
-        try (InputStream fileContent = filePart.getInputStream();
-             OutputStream outputStream = new FileOutputStream(tempFile)) {
-            int read;
-            final byte[] bytes = new byte[1024];
-            while ((read = fileContent.read(bytes)) != -1) {
-                outputStream.write(bytes, 0, read);
-            }
+        try (InputStream fileContent = filePart.getInputStream()) {
+            Files.copy(fileContent, tempFile.toPath(), REPLACE_EXISTING);
         }
         new MarsRovers().loadInputDataAndRun(tempFile, resp.getWriter());
         resp.setContentType("text/plain");

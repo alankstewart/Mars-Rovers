@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <title>Mars Rovers</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <style type="text/css">
         .btn-file {
             position: relative;
@@ -58,16 +58,21 @@
     <h1>Mars Rovers</h1>
     <br/>
 
-    <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
-        <span class="btn btn-default btn-file">
-            Upload <input id="inputFile" type="file" name="inputFile"/>
-        </span>
-        <br/>
-    </form>
+    <div id="input">
+        <h4>Input</h4>
+
+        <form id="uploadForm" method="post" action="/upload" enctype="multipart/form-data">
+            <span class="btn btn-default btn-file">
+                Upload <input id="inputFile" type="file" name="inputFile"/>
+            </span>
+            <br/>
+        </form>
+    </div>
     <br/>
 
     <div id="output">
         <h4>Output</h4>
+
         <pre id="results"/>
     </div>
 </div>
