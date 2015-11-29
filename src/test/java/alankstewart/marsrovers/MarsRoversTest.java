@@ -21,7 +21,7 @@ public class MarsRoversTest {
 
     @Test
     public void shouldLoadTestInputDataAndRun() throws Exception {
-        assertThat(getOutput("test-commands.txt"), is("1 3 N\n5 1 E\n3 5 N\n"));
+        assertThat(getOutput("test-commands.txt"), is("1 3 N\n5 1 E\n3 5 N\n4 2 N\n4 0 W\n"));
     }
 
     private String getOutput(String fileName) throws URISyntaxException, IOException {
