@@ -13,7 +13,9 @@ public final class Plateau {
     }
 
     public boolean contains(Position position) {
-        return position.getX() >= lowerLeft.getX() && position.getX() <= upperRight.getX()
-                && position.getY() >= lowerLeft.getY() && position.getY() <= upperRight.getY();
+        return position.getX() >= lowerLeft.getX() &&
+                position.getX() <= upperRight.getX() &&
+                position.getY() >= lowerLeft.getY() &&
+                position.getY() <= upperRight.getY();
     }
 }
