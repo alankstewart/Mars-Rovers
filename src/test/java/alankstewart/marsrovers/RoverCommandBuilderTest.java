@@ -18,10 +18,9 @@ public class RoverCommandBuilderTest {
         assertThat(roverCommands, hasSize(9));
     }
 
-    @Test
+    @Test(expected = NullPointerException.class)
     public void shouldHandleNullCommand() {
-        List<RoverCommand> roverCommands = new RoverCommandBuilder(null).build();
-        assertThat(roverCommands, hasSize(0));
+        new RoverCommandBuilder(null).build();
     }
 
     @Test

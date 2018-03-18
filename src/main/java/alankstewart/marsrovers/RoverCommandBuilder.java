@@ -1,6 +1,5 @@
 package alankstewart.marsrovers;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,11 +13,12 @@ public final class RoverCommandBuilder {
     private final String commandsString;
 
     public RoverCommandBuilder(String commandsString) {
+        Objects.requireNonNull(commandsString, "Commands string must not be null");
         this.commandsString = commandsString;
     }
 
     public List<RoverCommand> build() {
-        return commandsString == null ? Collections.emptyList() : commandsString.chars()
+        return commandsString.toUpperCase().chars()
                 .mapToObj(c -> getRoverCommand((char) c))
                 .filter(Objects::nonNull)
                 .collect(toList());
@@ -27,13 +27,10 @@ public final class RoverCommandBuilder {
     private RoverCommand getRoverCommand(char c) {
         switch (c) {
             case 'L':
-            case 'l':
                 return Rover::turnLeft;
             case 'R':
-            case 'r':
                 return Rover::turnRight;
             case 'M':
-            case 'm':
                 return Rover::move;
             default:
                 return null;

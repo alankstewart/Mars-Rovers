@@ -77,6 +77,9 @@ public enum Direction {
     public abstract Direction right();
 
     public static Direction from(String symbol) {
-        return Arrays.stream(values()).filter(d -> d.toString().equalsIgnoreCase(symbol)).findFirst().orElse(null);
+        return Arrays.stream(values())
+                .filter(d -> d.toString().equalsIgnoreCase(symbol))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Unknown direction " + symbol));
     }
 }
