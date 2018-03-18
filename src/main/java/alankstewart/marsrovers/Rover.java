@@ -15,8 +15,8 @@ public final class Rover {
         this.direction = direction;
     }
 
-    public void executeCommands(String commands) {
-        new RoverCommandBuilder(commands).build().forEach(c -> c.execute(this));
+    public void run(String commandString) {
+        new RoverCommandBuilder(commandString).build().forEach(c -> c.execute(this));
     }
 
     public void turnLeft() {
@@ -28,13 +28,36 @@ public final class Rover {
     }
 
     public void move() {
-        Position newPosition = position.from(direction.getX(), direction.getY());
+        Position newPosition;
+        switch (direction) {
+            case North:
+                newPosition = position.from(0, 1);
+                break;
+            case South:
+                newPosition = position.from(0, -1);
+                break;
+            case East:
+                newPosition = position.from(1, 0);
+                break;
+            case West:
+                newPosition = position.from(-1, 0);
+                break;
+            default:
+                newPosition = position;
+                break;
+        }
+
         if (plateau.contains(newPosition)) {
             position = newPosition;
         }
     }
 
     public String getCurrentPosition() {
+        return toString();
+    }
+
+    @Override
+    public String toString() {
         return String.format("%s %s", position.toString(), direction.name());
     }
 }

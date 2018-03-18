@@ -13,24 +13,24 @@ public class RoverTest {
     @Test
     public void shouldMoveAndTurnLeft() {
         Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(plateau, new Position(1, 2), Direction.N);
-        rover.executeCommands("LMLMLMLMM");
-        assertThat(rover.getCurrentPosition(), is("1 3 N"));
+        Rover rover = new Rover(plateau, new Position(1, 2), Direction.North);
+        rover.run("LMLMLMLMM");
+        assertThat(rover.getCurrentPosition(), is("1 3 North"));
     }
 
     @Test
     public void shouldMoveAndTurnRight() {
         Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(plateau, new Position(3, 3), Direction.E);
-        rover.executeCommands("MMRMMRMRRM");
-        assertThat(rover.getCurrentPosition(), is("5 1 E"));
+        Rover rover = new Rover(plateau, new Position(3, 3), Direction.East);
+        rover.run("MMRMMRMRRM");
+        assertThat(rover.getCurrentPosition(), is("5 1 East"));
     }
 
     @Test
     public void shouldStayWithinPlateau() {
         Plateau plateau = new Plateau(5, 5);
-        Rover rover = new Rover(plateau, new Position(2, 3), Direction.N);
-        rover.executeCommands("MMMMMMMMMMMMMRML");
-        assertThat(rover.getCurrentPosition(), is("3 5 N"));
+        Rover rover = new Rover(plateau, new Position(2, 3), Direction.North);
+        rover.run("MMMMMMMMMMMMMRML");
+        assertThat(rover.getCurrentPosition(), is("3 5 North"));
     }
 }

@@ -16,12 +16,12 @@ public class MarsRoversTest {
 
     @Test
     public void shouldLoadInputDataAndRun() throws Exception {
-        assertThat(getOutput("commands.txt"), is("1 3 N\n5 1 E\n"));
+        assertThat(getOutput("commands.txt"), is("1 3 North\n5 1 East\n"));
     }
 
     @Test
     public void shouldLoadTestInputDataAndRun() throws Exception {
-        assertThat(getOutput("test-commands.txt"), is("1 3 N\n5 1 E\n3 5 N\n4 2 N\n4 0 W\n"));
+        assertThat(getOutput("test-commands.txt"), is("1 3 North\n5 1 East\n3 5 North\n4 2 North\n4 0 West\n"));
     }
 
     private String getOutput(String fileName) throws URISyntaxException, IOException {

@@ -1,72 +1,82 @@
 package alankstewart.marsrovers;
 
+import java.util.Arrays;
+
 /**
  * Created by alanstewart on 28/11/2015.
  */
 public enum Direction {
 
-    N(0, 1) {
+    North {
         @Override
         public Direction left() {
-            return W;
+            return West;
         }
 
         @Override
         public Direction right() {
-            return E;
+            return East;
+        }
+
+        @Override
+        public String toString() {
+            return "N";
         }
     },
-    S(0, -1) {
+    South {
         @Override
         public Direction left() {
-            return E;
+            return East;
         }
 
         @Override
         public Direction right() {
-            return W;
+            return West;
+        }
+
+        @Override
+        public String toString() {
+            return "S";
         }
     },
-    E(1, 0) {
+    East {
         @Override
         public Direction left() {
-            return N;
+            return North;
         }
 
         @Override
         public Direction right() {
-            return S;
+            return South;
+        }
+
+        @Override
+        public String toString() {
+            return "E";
         }
     },
-    W(-1, 0) {
+    West {
         @Override
         public Direction left() {
-            return S;
+            return South;
         }
 
         @Override
         public Direction right() {
-            return N;
+            return North;
+        }
+
+        @Override
+        public String toString() {
+            return "W";
         }
     };
-
-    private final int x;
-    private final int y;
-
-    Direction(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public abstract Direction left();
 
     public abstract Direction right();
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public static Direction from(String symbol) {
+        return Arrays.stream(values()).filter(d -> d.toString().equalsIgnoreCase(symbol)).findFirst().orElse(null);
     }
 }

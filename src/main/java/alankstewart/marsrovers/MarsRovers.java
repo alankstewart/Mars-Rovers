@@ -52,7 +52,7 @@ public class MarsRovers {
         IntStream.range(0, rovers.size())
                 .forEach(i -> {
                     Rover rover = rovers.get(i);
-                    rover.executeCommands(commandsStrings.get(i));
+                    rover.run(commandsStrings.get(i));
                     writer.println(rover.getCurrentPosition());
                 });
     }
@@ -74,7 +74,7 @@ public class MarsRovers {
             return lines
                     .map(ROVER_POSITION_REGEX::matcher)
                     .filter(Matcher::matches)
-                    .map(m -> new Rover(plateau, new Position(parseInt(m.group(1)), parseInt(m.group(2))), Direction.valueOf(m.group(3))))
+                    .map(m -> new Rover(plateau, new Position(parseInt(m.group(1)), parseInt(m.group(2))), Direction.from(m.group(3))))
                     .collect(toList());
         }
     }
