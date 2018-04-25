@@ -2,7 +2,10 @@ package alankstewart.marsrovers;
 
 import org.junit.Test;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
@@ -25,9 +28,9 @@ public class MarsRoversTest {
     }
 
     private String getOutput(String fileName) throws URISyntaxException, IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try (PrintWriter writer = new PrintWriter(new PrintStream(baos))) {
-            File file = Paths.get(getClass().getClassLoader().getResource(fileName).toURI()).toFile();
+        var baos = new ByteArrayOutputStream();
+        try (var writer = new PrintWriter(new PrintStream(baos))) {
+            var file = Paths.get(getClass().getClassLoader().getResource(fileName).toURI()).toFile();
             new MarsRovers().loadInputDataAndRun(file, writer);
         }
         return baos.toString();
