@@ -1,9 +1,8 @@
 package alankstewart.marsrovers;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by alanstewart on 28/11/2015.
@@ -15,7 +14,7 @@ public class RoverTest {
         var plateau = new Plateau(5, 5);
         var rover = new Rover(plateau, new Position(1, 2), Direction.North);
         rover.run("LMLMLMLMM");
-        assertThat(rover.getCurrentPosition(), is("1 3 North"));
+        assertEquals("1 3 North", rover.getCurrentPosition());
     }
 
     @Test
@@ -23,7 +22,7 @@ public class RoverTest {
         var plateau = new Plateau(5, 5);
         var rover = new Rover(plateau, new Position(3, 3), Direction.East);
         rover.run("MMRMMRMRRM");
-        assertThat(rover.getCurrentPosition(), is("5 1 East"));
+        assertEquals("5 1 East", rover.getCurrentPosition());
     }
 
     @Test
@@ -31,6 +30,6 @@ public class RoverTest {
         var plateau = new Plateau(5, 5);
         var rover = new Rover(plateau, new Position(2, 3), Direction.North);
         rover.run("MMMMMMMMMMMMMRML");
-        assertThat(rover.getCurrentPosition(), is("3 5 North"));
+        assertEquals("3 5 North", rover.getCurrentPosition());
     }
 }
